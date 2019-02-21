@@ -32,6 +32,7 @@ describe('Article Statistics', () => {
     cy.get('input[placeholder="Password"]').type(`${registeredUser.password}{enter}`);
 
     cy.wait(['@postUser']);
+
   })
 
   it('Should success loading shares', () => {
