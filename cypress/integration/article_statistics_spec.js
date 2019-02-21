@@ -33,7 +33,12 @@ describe('Article Statistics', () => {
     cy.wait(['@postUser']);
 
     cy.route(/.*\/api\/tags/, 'fixture:tags.json').as('loadTags');
-    cy.route(/.*\/api\/articles/, 'fixture:articles.json').as('loadArticles');
+    cy
+      .route(
+        /.*\/api\/articles(\?limit=(\d+)&offset=(\d+))?/,
+        'fixture:articles.json'
+      )
+      .as('loadArticles');
 
     cy.wait(['@loadTags', '@loadArticles']);
 
