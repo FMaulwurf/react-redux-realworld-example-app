@@ -49,8 +49,8 @@ describe('Article Statistics', () => {
 
     cy.wait(['@loadComments', '@loadArticle', '@loadUser']);
 
-    cy.get('.btn-outline-seconday').contains('Statistics').should('exist');
-    cy.get('.btn-outline-seconday').contains('Statistics').click();
+    cy.get('.btn-outline-secondary').contains('Statistics').should('exist');
+    cy.get('.btn-outline-secondary').contains('Statistics').click();
 
     cy.wait(['@loadArticle', '@loadShares']);
     cy.get('.dot').its('length').should('be', 7);
