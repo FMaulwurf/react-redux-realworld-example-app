@@ -27,11 +27,15 @@ describe('Article Statistics', () => {
         token: 'jwt'
       }
     }).as('postUser');
-
     cy.get('input[placeholder="Email"]').type(registeredUser.email);
     cy.get('input[placeholder="Password"]').type(`${registeredUser.password}{enter}`);
 
     cy.wait(['@postUser']);
+
+    cy.route(/.*\/api\/tags/, 'fixture:tags.json').as('loadTags');
+    cy.route(/.*\/api\/articles/, 'fixture:articles.json').as('loadArticles');
+
+    cy.wait(['@loadTags', '@loadArticles']);
 
   })
 
